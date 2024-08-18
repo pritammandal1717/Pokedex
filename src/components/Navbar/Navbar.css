@@ -1,0 +1,21 @@
+.navbar {
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header{
+    text-align: center;
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 50px;
+    letter-spacing: 4px;
+    color: rgb(239, 247, 1);
+}
+
+.header-child {
+    margin-top: -10px;
+    color: rgb(239, 247, 1);
+    text-align: center;
+}

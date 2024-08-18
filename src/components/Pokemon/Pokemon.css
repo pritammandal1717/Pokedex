@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 15px;
+    border: 2px solid rgb(136, 136, 92);
+}
+
+.pokemon:hover{
+    transition: all ease 0.3s;
+    background-color: rgb(47, 45, 67);
+}
+
+.poke-name {
+    text-align: center;
+    font-family: "Carter One", system-ui;
+    font-size: larger;
+    letter-spacing: 3px;
+    color: yellow;
+    text-transform: capitalize;
+}
