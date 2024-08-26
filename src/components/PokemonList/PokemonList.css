@@ -24,6 +24,7 @@
 }
 
 .btn {
+  width: 70px;
     font-size: larger;
     border: none;
     border-radius: 5px;

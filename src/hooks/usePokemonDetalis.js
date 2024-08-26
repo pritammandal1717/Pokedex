@@ -12,6 +12,7 @@ function usePokemonDetalis(id) {
     const pokemonOfSameType =  await axios.get(`https://pokeapi.co/api/v2/type/${response.data.types ? response.data.types[0].type.name : ''}`)
 
     setPokemon({
+      id: response.data.id,
       name: response.data.name,
       image: response.data.sprites.other.dream_world.front_default,
       weight: response.data.weight,
@@ -31,7 +32,7 @@ function usePokemonDetalis(id) {
 
   useEffect(() => {
     downloadPokemon();
-  }, []);
+  }, [id]);
   return [pokemon];
 }
 

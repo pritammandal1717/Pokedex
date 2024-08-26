@@ -15,7 +15,10 @@
 }
 
 .header-child {
+    font-family: "Exo 2", sans-serif;
     margin-top: -10px;
     color: rgb(239, 247, 1);
     text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
