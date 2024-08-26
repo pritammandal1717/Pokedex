@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import './PokemonDetails.css'
 import usePokemonDetalis from "../../hooks/usePokemonDetalis";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function PokemonDetails() {
 
@@ -13,6 +14,21 @@ function PokemonDetails() {
         return parts[parts.length - 2];
     };
 
+    const toDataURL = async (url) => {
+        const response = await axios.get(url, { responseType: "blob" });
+        const imageDataUrl = URL.createObjectURL(response.data);
+    
+        return imageDataUrl;
+      };
+
+    const handleDownload = async () => {
+        const a = document.createElement("a");
+        a.href = await toDataURL(pokemon.image);
+        a.download = `${pokemon.name}.svg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
     return (
         <>
             <div className="pokemon-wrapper" key={id}>
@@ -21,6 +37,7 @@ function PokemonDetails() {
                         <div className="pokemon-image-wrapper">
                             <div className="pokemon-name">{pokemon.name}</div>
                             <div className="pokemon-image"><img src={pokemon.image} width={300} height={300} /></div>
+                            <button className="download" onClick={handleDownload}>Download SVG</button>
                         </div>
                         <div className="break"><hr /></div>
                         <div className="pokemon-details-wrapper">
@@ -35,7 +52,7 @@ function PokemonDetails() {
                                 {
                                     pokemon.types && pokemon.similarPokemons &&
                                     <div className="more-pokemons">
-                                        <h2>-- More {pokemon.types[0]} type pokemons --</h2>
+                                        <p>-- More {pokemon.types[0]} type pokemons --</p>
                                         <ul style={{ listStyle: "none", display: "flex", justifyContent: "center", margin: "0px" }}>
                                             {pokemon.similarPokemons.map((p) => <Link to={`/pokemon/${extractPokemonId(p.pokemon.url)}`}    style={{textDecoration:"none"}}><li className="search-pokemon" key={p.pokemon.url}>{p.pokemon.name}</li></Link>)}
                                         </ul>
