@@ -55,7 +55,6 @@ function Search() {
                 />
             </div>
             <div>
-                {loading && <div className="loader"></div>}
                 {error && <p>There was an error loading the pokemons</p>}
                 {!loading && !error && searchItem && filteredPokemons.length > 0 && (
                     <ul className="search-list">
