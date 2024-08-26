@@ -5,15 +5,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import usePokemonList from '../../hooks/usePokemonList';
 
 function PokemonList(){
-    
-    // const [pokemonList, setPokemonList] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true); 
-
-    // const [pokedexUrl, setPokedexUrl] = useState("https://pokeapi.co/api/v2/pokemon");
-    // const[nextUrl, setNextUrl] = useState("");
-    // const[prevUrl, setPrevUrl] = useState("");
-
-    const {pokemonListState, setPokemonListState} = usePokemonList();
+    const [pokemonListState, setPokemonListState] = usePokemonList();
 
     return(
         <div className="pokemon-list-wrapper">

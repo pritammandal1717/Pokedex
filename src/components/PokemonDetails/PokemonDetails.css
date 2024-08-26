@@ -58,7 +58,37 @@
     margin-left: 7px;
     padding: 5px 7px; 
     border-radius: 15px;
+    color: rgb(229, 235, 75);
     background-color: rgb(73, 67, 82);
+}
+
+.more-pokemons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.more-pokemons>h2{
+  color: rgb(235, 214, 75);
+  font-family: "Exo 2", sans-serif;
+  text-transform: capitalize;
+}
+.more-pokemons>ul{
+  list-style: none;
+  display:flex;
+  justify-content: center;
+  padding-inline-start: 0px;
+}
+.more-pokemons>ul>li{
+  margin-right: 7px;
+  font-family: "Exo 2", sans-serif;
+  font-size: larger;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 5px 7px; 
+  border-radius: 15px;
+  color: rgb(229, 235, 75);
+  background-color: rgb(73, 67, 82);
 }
 
 
@@ -84,6 +114,13 @@
     .basic-details {
         width: 100%;
     }
+    .more-pokemons>ul{
+      flex-wrap: wrap;
+    }
+    .more-pokemons>ul>li{
+      margin-bottom: 10px;
+    }
+
 }
 
 .loader {

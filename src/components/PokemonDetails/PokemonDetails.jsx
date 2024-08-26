@@ -1,41 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import './PokemonDetails.css'
+import usePokemonDetalis from "../../hooks/usePokemonDetalis";
 
 function PokemonDetails() {
 
     const { id } = useParams();
-    const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${id}`
-    const pokemonGenderUrl = `https://pokeapi.co/api/v2/gender/${id}/`
-
-    const [pokemon, setPokemon] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    async function downloadPokemon() {
-        setIsLoading(true);
-        const response = await axios.get(pokemonUrl);
-        console.log(response);
-        setPokemon({
-            name: response.data.name,
-            image: response.data.sprites.other.dream_world.front_default,
-            weight: response.data.weight,
-            height: response.data.height,
-            types: response.data.types.map((t) => t.type.name),
-            abilities: response.data.abilities.map((a) => a.ability.name),
-        })
-
-        setIsLoading(false);
-    }
-
-    useEffect(() => {
-        downloadPokemon();
-    }, []);
+    const [pokemon] = usePokemonDetalis(id);
 
     return (
         <>
             <div className="pokemon-wrapper">
-                {(isLoading) ? <div className="loader"></div> :
+                {(pokemon.isLoading) ? <div className="loader"></div> :
                     <>
                         <div className="pokemon-image-wrapper">
                             <div className="pokemon-name">{pokemon.name}</div>
@@ -53,6 +28,18 @@ function PokemonDetails() {
 
                         </div>
                     </>
+                }
+            </div>
+
+            <div>
+                {
+                    pokemon.types && pokemon.similarPokemons &&
+                    <div className="more-pokemons">
+                        <h2>--- More {pokemon.types[0]} type pokemons ---</h2>
+                        <ul style={{listStyle:"none", display:"flex",justifyContent: "center",margin: "0px"}}>
+                            {pokemon.similarPokemons.map((p) => <li key={p.pokemon.url}>{p.pokemon.name}</li>)}
+                        </ul>
+                    </div>
                 }
             </div>
         </>

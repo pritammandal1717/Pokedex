@@ -3,6 +3,23 @@ root{
     padding: 0;
 }
 
+::-webkit-scrollbar{
+    width: 6px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: rgb(38, 36, 53);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgb(205, 200, 103);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(224, 181, 93);
+}
+
 body{
     background-color: rgb(38, 36, 53);
 }
