@@ -54,7 +54,7 @@ function PokemonDetails() {
                                     <div className="more-pokemons">
                                         <p>-- More {pokemon.types[0]} type pokemons --</p>
                                         <ul style={{ listStyle: "none", display: "flex", justifyContent: "center", margin: "0px" }}>
-                                            {pokemon.similarPokemons.map((p) => <Link to={`/pokemon/${extractPokemonId(p.pokemon.url)}`}    style={{textDecoration:"none"}}><li className="search-pokemon" key={p.pokemon.url}>{p.pokemon.name}</li></Link>)}
+                                            {pokemon.similarPokemons.map((p) => <Link to={`/pokemon/${extractPokemonId(p.pokemon.url)}`}    style={{textDecoration:"none"}} key={p.pokemon.url}><li className="search-pokemon" key={p.pokemon.url}>{p.pokemon.name}</li></Link>)}
                                         </ul>
                                     </div>
                                 }

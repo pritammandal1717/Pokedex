@@ -8,7 +8,18 @@ function usePokemonDetalis(id) {
   });
   const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
   async function downloadPokemon() {
-    const response = await axios.get(pokemonUrl);
+    const response = await axios.get(pokemonUrl).catch(function (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
     const pokemonOfSameType = await axios
       .get(
         `https://pokeapi.co/api/v2/type/${
